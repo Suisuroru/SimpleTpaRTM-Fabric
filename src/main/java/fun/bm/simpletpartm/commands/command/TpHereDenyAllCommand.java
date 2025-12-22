@@ -1,18 +1,17 @@
 package fun.bm.simpletpartm.commands.command;
 
-import com.mojang.brigadier.context.CommandContext;
 import fun.bm.simpletpartm.commands.AbstractCommand;
 import fun.bm.simpletpartm.managers.TeleportDataManager;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
-public class TpHereDenyCommand extends AbstractCommand {
-    public TpHereDenyCommand() {
-        super("tpHereDeny");
+import java.util.Set;
+
+public class TpHereDenyAllCommand extends AbstractCommand {
+    public TpHereDenyAllCommand() {
+        super("tpHereDenyAll");
     }
 
     @Override
@@ -28,38 +27,17 @@ public class TpHereDenyCommand extends AbstractCommand {
                                             context.getSource().sendMessage(Text.literal("§c请使用玩家执行此命令"));
                                             return 1;
                                         }
-                                        ServerPlayerEntity into = TeleportDataManager.getLastTpHereRequest( from);
-                                        if (into == null){
+                                        Set<ServerPlayerEntity> intos = TeleportDataManager.getTpHereRequests(from);
+                                        if (intos.isEmpty()) {
                                             context.getSource().sendMessage(Text.literal("§c没有发现tpHere请求"));
                                             return 1;
                                         }
-                                        return executeTpHereDeny(context, from, into);
+                                        for (ServerPlayerEntity into : intos) {
+                                            TpHereDenyCommand.executeTpHereDeny(context, from, into);
+                                        }
+                                        return 1;
                                     })
-                                    .then(
-                                            CommandManager
-                                                    .argument("name", EntityArgumentType.player())
-                                                    .executes((context) -> {
-                                                        ServerPlayerEntity from = context.getSource().getPlayer();
-                                                        if (from == null) {
-                                                            context.getSource().sendMessage(Text.literal("§c请使用玩家执行此命令"));
-                                                            return 1;
-                                                        }
-                                                        ServerPlayerEntity into = EntityArgumentType.getPlayer(context, "name");
-                                                        return executeTpHereDeny(context, from, into);
-                                                    })
-                                    )
                     );
         });
-    }
-
-    public int executeTpHereDeny(CommandContext<ServerCommandSource> context, ServerPlayerEntity from, ServerPlayerEntity into){
-        if(from.getUuid() == into.getUuid()) {
-            context.getSource().sendMessage(Text.literal("§c无法拒绝自身请求"));
-            return 1;
-        }
-        TeleportDataManager.removeTpHereData(from, into);
-        context.getSource().sendMessage(Text.literal("§c已拒绝玩家 §b" + into.getName().getString() + " §c的传送请求"));
-        into.sendMessage(Text.literal("§c玩家 §b" + from.getName().getString() +" §c拒绝了你的传送请求"));
-        return 1;
     }
 }

@@ -1,4 +1,4 @@
-package fun.bm.simpletpartm.config;
+package fun.bm.simpletpartm.configs;
 
 import java.util.IllegalFormatConversionException;
 

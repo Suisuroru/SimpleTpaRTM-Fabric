@@ -1,4 +1,4 @@
-package me.earthme.luminol.utils;
+package fun.bm.simpletpartm.utils;
 
 import net.minecraft.server.MinecraftServer;
 import org.jetbrains.annotations.NotNull;

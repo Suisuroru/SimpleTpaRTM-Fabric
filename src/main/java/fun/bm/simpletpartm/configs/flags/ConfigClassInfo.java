@@ -1,4 +1,4 @@
-package fun.bm.simpletpartm.config.flags;
+package fun.bm.simpletpartm.configs.flags;
 
 import fun.bm.simpletpartm.enums.EnumConfigCategory;
 

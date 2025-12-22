@@ -1,4 +1,4 @@
-package fun.bm.simpletpartm.config;
+package fun.bm.simpletpartm.configs;
 
 public class DefaultTransformLogic {
     public Object transform(Object obj) {

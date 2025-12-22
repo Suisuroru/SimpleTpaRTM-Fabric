@@ -1,9 +1,9 @@
-package fun.bm.simpletpartm.config;
+package fun.bm.simpletpartm.configs;
 
 import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.mojang.logging.LogUtils;
-import fun.bm.simpletpartm.config.flags.*;
+import fun.bm.simpletpartm.configs.flags.*;
 import fun.bm.simpletpartm.enums.EnumConfigCategory;
 import fun.bm.simpletpartm.utils.ClassLoadUtil;
 import org.jetbrains.annotations.NotNull;

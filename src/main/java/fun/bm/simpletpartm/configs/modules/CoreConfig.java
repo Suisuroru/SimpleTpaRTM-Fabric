@@ -1,17 +1,18 @@
-package fun.bm.simpletpartm.config.modules;
+package fun.bm.simpletpartm.configs.modules;
 
-import fun.bm.simpletpartm.config.flags.ConfigClassInfo;
-import fun.bm.simpletpartm.config.flags.ConfigInfo;
+import fun.bm.simpletpartm.configs.IConfigModule;
+import fun.bm.simpletpartm.configs.flags.ConfigClassInfo;
+import fun.bm.simpletpartm.configs.flags.ConfigInfo;
 import fun.bm.simpletpartm.enums.EnumConfigCategory;
-import fun.bm.simpletpartm.manager.TeleportDataManager;
+import fun.bm.simpletpartm.managers.TeleportDataManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 @ConfigClassInfo(category = EnumConfigCategory.CORE)
-public class CoreConfig {
+public class CoreConfig implements IConfigModule {
     @ConfigInfo(name = "enable-cooldown", comments = "Enable cooldown for tpa requests & back command")
     public static boolean enableCooldown = false;
 
-    @ConfigInfo(name = "cooldown-time", comments = "Cooldown time in seconds")
+    @ConfigInfo(name = "cooldown-time", comments = "Cooldown time in seconds (except tpHere)")
     public static int cooldownTime = 5;
 
     public static int getCooldownTime() {

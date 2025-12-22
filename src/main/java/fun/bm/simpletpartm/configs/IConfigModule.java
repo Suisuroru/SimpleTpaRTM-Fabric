@@ -1,4 +1,4 @@
-package fun.bm.simpletpartm.config;
+package fun.bm.simpletpartm.configs;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import org.jetbrains.annotations.NotNull;

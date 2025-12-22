@@ -1,6 +1,5 @@
 package fun.bm.simpletpartm.managers;
 
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -13,18 +12,17 @@ public class TeleportScheduler {
     public static Map<Integer, ScheduleTask> tasks = new ConcurrentHashMap<>();
 
     public static void tick() {
-            long time = System.currentTimeMillis();
-            synchronized (lock) {
-                for (ScheduleTask task : tasks.values()) {
-                    if (task.getStartTime() + task.getDelay() <= time) {
-                        task.getTask().run();
-                        tasks.remove(task.getTaskId());
-                    } else {
-                        if (task.getLastRunPeriod() + task.getPeriod() <= time) {
-                            if (task.getPeriodicTask() != null) {
-                                task.getPeriodicTask().run();
-                                task.setLastRunPeriod(time);
-                            }
+        long time = System.currentTimeMillis();
+        synchronized (lock) {
+            for (ScheduleTask task : tasks.values()) {
+                if (task.getStartTime() + task.getDelay() <= time) {
+                    task.getTask().run();
+                    tasks.remove(task.getTaskId());
+                } else {
+                    if (task.getLastRunPeriod() + task.getPeriod() <= time) {
+                        if (task.getPeriodicTask() != null) {
+                            task.getPeriodicTask().run();
+                            task.setLastRunPeriod(time);
                         }
                     }
                 }
