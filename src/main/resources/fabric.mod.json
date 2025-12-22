@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "simpletpartm",
+  "version": "${version}",
+  "name": "SimpleTpaRTM",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "unlicense",
+  "icon": "assets/simpletpartm/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "fabric-datagen": [
+      "fun.bm.simpletpartm.client.SimpletpartmDataGenerator"
+    ],
+    "main": [
+      "fun.bm.simpletpartm.Simpletpartm"
+    ]
+  },
+  "mixins": [
+    "simpletpartm.mixins.json",
+    {
+      "config": "simpletpartm.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
