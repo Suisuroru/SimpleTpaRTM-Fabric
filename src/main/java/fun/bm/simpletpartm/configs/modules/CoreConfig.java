@@ -15,6 +15,9 @@ public class CoreConfig implements IConfigModule {
     @ConfigInfo(name = "cooldown-time", comments = "Cooldown time in seconds (except tpHere)")
     public static int cooldownTime = 5;
 
+    @ConfigInfo(name = "cleanup-interval-ticks", comments = "How often to clean up teleport data (in ticks, number of ticks between cleanups)")
+    public static int cleanupIntervalTicks = 20 * 60 * 15; // 15 minutes
+
     public static int getCooldownTime() {
         return enableCooldown ? cooldownTime : 0;
     }

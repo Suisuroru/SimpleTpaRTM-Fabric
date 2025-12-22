@@ -1,6 +1,8 @@
 package fun.bm.simpletpartm.managers;
 
+import fun.bm.simpletpartm.configs.modules.CoreConfig;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.Vec3d;
@@ -161,6 +163,25 @@ public class TeleportDataManager {
     public static void clearPosStore(ServerPlayerEntity player) {
         UUID uuid = player.getUuid();
         posStore.remove(uuid);
+    }
+
+    public static void cleanUpCache(MinecraftServer server) {
+        if (server.getTicks() % CoreConfig.cleanupIntervalTicks == 0) {
+            cleanCacheForMap(server, tpaData);
+            cleanCacheForMap(server, tpHereData);
+            cleanCacheForMap(server, tpHereToAll);
+            cleanCacheForMap(server, backData);
+            cleanCacheForMap(server, lastTeleportData);
+            cleanCacheForMap(server, posStore);
+        }
+    }
+
+    public static void cleanCacheForMap(MinecraftServer server, Map<UUID, ?> map) {
+        for (UUID uuid : map.keySet()) {
+            if (server.getPlayerManager().getPlayer(uuid) == null) {
+                map.remove(uuid);
+            }
+        }
     }
 
     public static void clearAllData(ServerPlayerEntity player) {
