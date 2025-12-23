@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class TpHereDenyAllCommand extends AbstractCommand {
     public TpHereDenyAllCommand() {
-        super("tpHereDenyAll");
+        super("tpheredenyall");
     }
 
     @Override

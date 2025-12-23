@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class TpaDenyAllCommand extends AbstractCommand {
     public TpaDenyAllCommand() {
-        super("tpaDenyAll");
+        super("tpadenyall");
     }
 
     @Override

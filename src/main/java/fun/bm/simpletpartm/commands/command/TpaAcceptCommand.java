@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TpaAcceptCommand extends AbstractCommand {
 
     public TpaAcceptCommand() {
-        super("tpaAccept");
+        super("tpaaccept");
     }
 
     @Override

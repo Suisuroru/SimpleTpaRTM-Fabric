@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 
 public class TpaDenyCommand extends AbstractCommand {
     public TpaDenyCommand() {
-        super("tpaDeny");
+        super("tpadeny");
     }
 
     @Override

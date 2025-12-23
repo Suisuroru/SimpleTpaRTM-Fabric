@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 
 public class TpaCancelCommand extends AbstractCommand {
     public TpaCancelCommand() {
-        super("tpaCancel");
+        super("tpacancel");
     }
 
     @Override

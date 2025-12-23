@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class TpHereCancelCommand extends AbstractCommand {
     public TpHereCancelCommand() {
-        super("tpHereCancel");
+        super("tpherecancel");
     }
 
     @Override

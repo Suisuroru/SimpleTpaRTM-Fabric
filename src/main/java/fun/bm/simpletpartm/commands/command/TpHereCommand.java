@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 
 public class TpHereCommand extends AbstractCommand {
     public TpHereCommand() {
-        super("tpHere");
+        super("tphere");
     }
 
     @Override

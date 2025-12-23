@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 
 public class TpHereDenyCommand extends AbstractCommand {
     public TpHereDenyCommand() {
-        super("tpHereDeny");
+        super("tpheredeny");
     }
 
     @Override

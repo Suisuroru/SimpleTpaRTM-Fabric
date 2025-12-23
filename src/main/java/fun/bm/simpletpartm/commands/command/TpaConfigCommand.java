@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class TpaConfigCommand extends AbstractCommand {
     public TpaConfigCommand() {
-        super("tpaConfig");
+        super("tpaconfig");
     }
 
     @Override

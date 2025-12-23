@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class TpaAcceptAllCommand extends AbstractCommand {
     public TpaAcceptAllCommand() {
-        super("tpaAcceptAll");
+        super("tpaacceptall");
     }
 
     @Override

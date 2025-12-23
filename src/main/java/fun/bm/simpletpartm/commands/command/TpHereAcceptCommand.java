@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class TpHereAcceptCommand extends AbstractCommand {
     public TpHereAcceptCommand() {
-        super("tpHereAccept");
+        super("tphereaccept");
     }
 
     @Override
