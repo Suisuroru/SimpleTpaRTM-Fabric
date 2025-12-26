@@ -64,9 +64,9 @@ public class TpHereCommand extends AbstractCommand {
 
         TeleportDataManager.sendTpHere(from, into);
 
-        context.getSource().sendMessage(Text.literal("§a已向§b " + from.getStringifiedName() + " §a发送传送到你的位置的请求"));
+        context.getSource().sendMessage(Text.literal("§a已向§b " + from.getName().getString() + " §a发送传送到你的位置的请求"));
         context.getSource().sendMessage(Text.literal("§a请输入 /tpHereCancel 以取消传送"));
-        from.sendMessage(Text.literal("§a玩家§b " + into.getStringifiedName() + " §a请求传送至TA的位置"));
+        from.sendMessage(Text.literal("§a玩家§b " + into.getName().getString() + " §a请求传送至TA的位置"));
         from.sendMessage(Text.literal("§a请输入 /tpHereAccept 以接受传送"));
         return 1;
     }

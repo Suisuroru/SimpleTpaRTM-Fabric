@@ -13,6 +13,7 @@ import net.minecraft.network.packet.s2c.play.TitleS2CPacket;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 
 import java.util.Set;
@@ -95,12 +96,12 @@ public class TpaAcceptCommand extends AbstractCommand {
             }
             TeleportDataManager.removeTpaData(from, into);
             TeleportDataManager.reportTeleportedData(from, false);
-            from.teleport(into.getEntityWorld(), into.getX(), into.getY(), into.getZ(), Set.of(), from.getYaw(), from.getPitch(), true);
-            from.sendMessage(Text.literal("§a已传送至" + into.getStringifiedName()));
+            from.teleport((ServerWorld) into.getEntityWorld(), into.getX(), into.getY(), into.getZ(), Set.of(), from.getYaw(), from.getPitch());
+            from.sendMessage(Text.literal("§a已传送至" + into.getName().getString()));
             TeleportDataManager.clearPosStore(from);
         };
         into.sendMessage(Text.literal("§a已接受传送"));
-        from.sendMessage(Text.literal("§a" + into.getStringifiedName() + "已接受传送"));
+        from.sendMessage(Text.literal("§a" + into.getName().getString() + "已接受传送"));
         int standStill = TpaConfig.getStandStillTime();
         if (standStill != -1) {
             long time = System.currentTimeMillis();
@@ -132,10 +133,10 @@ public class TpaAcceptCommand extends AbstractCommand {
     public static boolean onlineCheck(ServerPlayerEntity from, ServerPlayerEntity into) {
         if (from.isDisconnected() || into.isDisconnected()) {
             if (!into.isDisconnected()) {
-                into.sendMessage(Text.literal("§c玩家" + from.getStringifiedName() + "已离线"));
+                into.sendMessage(Text.literal("§c玩家" + from.getName().getString() + "已离线"));
             }
             if (!from.isDisconnected()) {
-                from.sendMessage(Text.literal("§c玩家" + into.getStringifiedName() + "已离线"));
+                from.sendMessage(Text.literal("§c玩家" + into.getName().getString() + "已离线"));
             }
             return true;
         }

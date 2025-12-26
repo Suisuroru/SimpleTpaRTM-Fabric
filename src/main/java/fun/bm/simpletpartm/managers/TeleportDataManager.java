@@ -56,7 +56,7 @@ public class TeleportDataManager {
     public static void reportTeleportedData(ServerPlayerEntity from, boolean natural) {
         long time = System.currentTimeMillis();
         if (!natural) lastTeleportData.put(from.getUuid(), time);
-        Pair<Pair<RegistryKey<World>, Vec3d>, Long> value = new Pair<>(new Pair<>(from.getEntityWorld().getRegistryKey(), from.getEntityPos()), time);
+        Pair<Pair<RegistryKey<World>, Vec3d>, Long> value = new Pair<>(new Pair<>(from.getEntityWorld().getRegistryKey(), from.getPos()), time);
         backData.put(from.getUuid(), value);
     }
 

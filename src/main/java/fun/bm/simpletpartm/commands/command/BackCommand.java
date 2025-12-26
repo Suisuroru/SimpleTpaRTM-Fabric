@@ -74,7 +74,7 @@ public class BackCommand extends AbstractCommand {
                                                     TeleportDataManager.reportTeleportedData(player, false);
                                                     ServerWorld world = player.getEntityWorld().getServer().getWorld(value.getLeft().getLeft());
                                                     Vec3d pos = value.getLeft().getRight();
-                                                    player.teleport(world, pos.getX(), pos.getY(), pos.getZ(), Set.of(), player.getYaw(), player.getPitch(), true);
+                                                    player.teleport(world, pos.getX(), pos.getY(), pos.getZ(), Set.of(), player.getYaw(), player.getPitch());
                                                     context.getSource().sendMessage(Text.literal("§a已返回至上一个地点[" + value.getLeft().getLeft().getValue().toString() + "]" + "(" + pos.getX() + "," + pos.getY() + "," + pos.getZ() + ")"));
                                                     TeleportDataManager.clearPosStore(player);
                                                 };

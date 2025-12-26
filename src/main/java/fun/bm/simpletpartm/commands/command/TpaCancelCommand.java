@@ -61,7 +61,7 @@ public class TpaCancelCommand extends AbstractCommand {
             return 1;
         }
         TeleportDataManager.removeTpaData(from, into);
-        context.getSource().sendMessage(Text.literal("§a已取消传送到" + into.getStringifiedName() + "请求"));
+        context.getSource().sendMessage(Text.literal("§a已取消传送到" + into.getName().getString() + "请求"));
         return 1;
     }
 }

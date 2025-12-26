@@ -97,12 +97,12 @@ public class TpHereAcceptCommand extends AbstractCommand {
             }
             TeleportDataManager.removeTpHereData(from, into);
             TeleportDataManager.reportTeleportedData(from, false);
-            from.teleport(into.getEntityWorld(), into.getX(), into.getY(), into.getZ(), Set.of(), from.getYaw(), from.getPitch(), true);
-            from.sendMessage(Text.literal("§a已传送至" + into.getStringifiedName()));
+            from.teleport(into.getServerWorld(), into.getX(), into.getY(), into.getZ(), Set.of(), from.getYaw(), from.getPitch());
+            from.sendMessage(Text.literal("§a已传送至" + into.getName().getString()));
             TeleportDataManager.clearPosStore(from);
         };
         from.sendMessage(Text.literal("§a已接受传送"));
-        into.sendMessage(Text.literal("§a" + from.getStringifiedName() + "已接受传送"));
+        into.sendMessage(Text.literal("§a" + from.getName().getString() + "已接受传送"));
         int standStill = TpaConfig.getStandStillTime();
         if (standStill != -1) {
             long time = System.currentTimeMillis();

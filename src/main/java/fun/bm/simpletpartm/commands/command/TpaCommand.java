@@ -55,11 +55,11 @@ public class TpaCommand extends AbstractCommand {
         boolean success = TeleportDataManager.sendTpa(from, into);
         if (!success) {
             ServerPlayerEntity target = from.getEntityWorld().getServer().getPlayerManager().getPlayer(TeleportDataManager.tpaData.get(from.getUuid()).getLeft());
-            context.getSource().sendMessage(Text.literal("§c你已有一个未处理的传送请求，请等待对方处理，当前的传送目标：" + (target == null ? "null" : target.getStringifiedName())));
+            context.getSource().sendMessage(Text.literal("§c你已有一个未处理的传送请求，请等待对方处理，当前的传送目标：" + (target == null ? "null" : target.getName().getString())));
             context.getSource().sendMessage(Text.literal("§c请输入 /tpaCancel 以取消传送"));
         } else {
-            context.getSource().sendMessage(Text.literal("§a已发送传送请求至" + into.getStringifiedName()));
-            into.sendMessage(Text.literal("§a玩家 " + from.getStringifiedName() + " 请求传送至你"));
+            context.getSource().sendMessage(Text.literal("§a已发送传送请求至" + into.getName().getString()));
+            into.sendMessage(Text.literal("§a玩家 " + from.getName().getString() + " 请求传送至你"));
             into.sendMessage(Text.literal("§a请输入 /tpaAccept 以接受传送"));
             into.sendMessage(Text.literal("§a请输入 /tpaDeny 以拒绝传送"));
         }

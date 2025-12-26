@@ -23,7 +23,7 @@ public class TpaConfigCommand extends AbstractCommand {
                     .register(
                             CommandManager
                                     .literal(this.name)
-                                    .requires(CommandManager.requirePermissionLevel(CommandManager.field_31839))
+                                    .requires(source -> source.hasPermissionLevel(4))
                                     .then(
                                             CommandManager
                                                     .literal("reload")

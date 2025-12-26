@@ -49,7 +49,7 @@ public class TpHereCancelCommand extends AbstractCommand {
                                                 boolean flag = false;
                                                 for (ServerPlayerEntity from : froms) {
                                                     flag = flag || TeleportDataManager.removeTpHereData(from, into);
-                                                    from.sendMessage(Text.literal("§b" + into.getStringifiedName() + "§a已取消tpHere请求"));
+                                                    from.sendMessage(Text.literal("§b" + into.getName().getString() + "§a已取消tpHere请求"));
                                                 }
                                                 if (flag) {
                                                     into.sendMessage(Text.literal("§a取消了上一个tpHere请求"));
@@ -74,8 +74,8 @@ public class TpHereCancelCommand extends AbstractCommand {
                                                                     return 1;
                                                                 }
                                                                 if (TeleportDataManager.removeTpHereData(from, into)) {
-                                                                    from.sendMessage(Text.literal("§b" + into.getStringifiedName() + "§c已取消tpHere请求"));
-                                                                    into.sendMessage(Text.literal("§a取消了对§b " + from.getStringifiedName() + " §a的tpHere请求"));
+                                                                    from.sendMessage(Text.literal("§b" + into.getName().getString() + "§c已取消tpHere请求"));
+                                                                    into.sendMessage(Text.literal("§a取消了对§b " + from.getName().getString() + " §a的tpHere请求"));
                                                                 } else {
                                                                     context.getSource().sendMessage(Text.literal("§c没有tpHere请求可以取消"));
                                                                 }
